@@ -36,7 +36,7 @@ The study is composed of 4 parts:
  
  1- Data Collection 
  
- 2_ Data Exploration and Preprocessing
+ 2- Data Exploration and Preprocessing
  
  3- Data Augmentation
  
