@@ -8,36 +8,40 @@ This repository provides code for this bachelor thesis:
 **Abstract:** *Lameness, characterized by an anomalous gait in cows due to a dysfunction in their locomotive system, is a serious welfare issue for cows and farmers. Prompt lameness detection methods can prevent the development of acute lameness in cattle. In this study, we propose a deep learning framework to help identify lameness based on motion curves of different leg joints on the cow. The framework combines data augmentation and a convolutional neural network using an LeNet architecture. Performance assessed using cross validation showed promising prediction accuracies above 99\% and 91\% for 
 validation and test sets, respectively. This also demonstrates the usefulness of data generation in cases where the data set is originally small in size and difficult to generate.*
 
-This is the research pipeline of the thesis:
+This is the research pipeline of the study:
 <p align="center">
   <img src="./images/overall_tech_route.png" alt="drawing" width="90%"/>
 </p>
 
+## Setting up an environment
+
+This framework is built using Python 3.7 and relies on the PyTorch 1.4.0+. The following command installs all necessary packages:
+
+```.bash
+pip3 install -r requirements.txt
+```
+
 ### Background: 
-- Lameness can cause pain or physical/neurological trauma in affected dairy cows and reduce their milk productivity. It is the third leading cause of their culling after mastitis and infertility [1, 2].
+- Lameness can cause pain or physical/neurological trauma in affected dairy cows and reduce their milk productivity. It is the third leading cause of their culling after mastitis and infertility.
 
-- Visual gait scoring is used to rank an animal's walking ability but traditional methods are costly, manually intensive, subjective and time-consuming, making them both susceptible to human error. They also cannot be scaled up as the size of the farm increases [3].
+- Visual gait scoring is used to rank an animal's walking ability but traditional methods are costly, manually intensive, subjective and time-consuming, making them both susceptible to human error. They also cannot be scaled up as the size of the farm increases.
 
-- Automatic lameness detection systems have been developed using various types of sensors (accelerometers, radars, RGB video and 3D imaging) and machine learning models like support vector machines [4], K- Nearest Neighbor [5] and Long-Short-Term Memory cells [6] with high accuracies (all above 94%).
+- Automatic lameness detection systems have been developed using various types of sensors (accelerometers, radars, RGB video and 3D imaging) and machine learning models like support vector machines, K- Nearest Neighbor and Long-Short-Term Memory cells with high accuracies (all above 94%).
 
 - However, large and accessible datasets are necessary for developing such models, but unfortunately, these are still rare to come by or produce in the dairy farming sector.
 
 ### Objective: 
-In this study, we investigate whether data augmentation can be used to mitigate the lack of available gait scoring data for a dairy farm, and we develop a CNN based on a modified LeNet [7] architecture and a SVM as a baseline to test our hypothesis and classify lame and non- lame cows primarily using synthetic data.
+In this study, we investigate whether data augmentation can be used to mitigate the lack of available gait scoring data for a dairy farm, and we develop a CNN based on a modified LeNet architecture and a SVM as a baseline to test our hypothesis and classify lame and non- lame cows primarily using synthetic data.
 The study is composed of 4 parts:
- 1- Introduction
  
- 2- Data Collection 
+ 1- Data Collection 
  
- 3_ Data Exploration and Preprocessing
+ 2_ Data Exploration and Preprocessing
  
- 4- Data Augmentation
+ 3- Data Augmentation
  
- 5- Binary Classification Non-lame vs Lame cows
+ 4- Binary Classification Non-lame vs Lame cows
 
-
-
-These two Simulations show two examples of generated data.
 
 
 ### Data Collection:
@@ -48,7 +52,7 @@ A set of 15 random Holstein cows (lame and non-lame) was selected for kinematic 
   <img src="./images/screenshot_ballerina.png"  width="45%"/>
 </p>
 
-Videos of cows walking along a passageway were recorded and scored by a trained visual observer. A 3D biomechanical analysis program (Vicon Motus 10.0; CONTEMPLAS GmbH, Kempton, Germany) created a motion template (Fig. 2) for each leg joint angle and each cow using the acquired video. Automatic tracking of the reflective markers in the X, Y and Z planes, as well as the rotational matrix R, was then carried out. This process was repeated three times across a span of 14 weeks. (Fig. 3)
+Videos of cows walking along a passageway were recorded and scored by a trained visual observer. A 3D biomechanical analysis program (Vicon Motus 10.0; CONTEMPLAS GmbH, Kempton, Germany) created a motion template, for each leg joint angle and each cow using the acquired video. Automatic tracking of the reflective markers in the X, Y and Z planes, as well as the rotational matrix R, was then carried out. This process was repeated three times across a span of 14 weeks.
 
 
 
@@ -94,7 +98,7 @@ The figure bellow shows the t-SNE visualization of the new created data
 - A SVM classifier was also trained and evaluated on the same data 
 
 ### Results 
-Multiple CNN models were built based on the configuration mentioned in the previous section. During training, the models were evaluated following a 5-fold cross-validation framework using a Monte Carlo optimization approach (tab. 1).
+Multiple CNN models were built based on the configuration mentioned in the previous section. During training, the models were evaluated following a 5-fold cross-validation framework using a Monte Carlo optimization approach.
 
   <table>
     <tr>
