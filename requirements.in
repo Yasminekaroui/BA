@@ -1,0 +1,12 @@
+pandas
+xlrd
+numpy 
+scipy 
+sklearn
+matplotlib
+statistics
+tqdm
+seaborn
+argparse
+
+
