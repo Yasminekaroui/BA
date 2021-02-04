@@ -44,19 +44,29 @@ These two Simulations show two examples of generated data.
 A set of 15 random Holstein cows (lame and non-lame) was selected for kinematic gait analysis. Reflective markers were placed on eight points on each side of the cow’s body (Fig. 2). (screenshot_ballerina.png , cow_markers.png)
 
 <p float="left">
-  <img src="./images/cow_markers.png"  width="100"/>
-  <img src="./images/screenshot_ballerina.png"  width="100"/>
+  <img src="./images/cow_markers.png"  width="45%"/>
+  <img src="./images/screenshot_ballerina.png"  width="45%"/>
 </p>
 
 Videos of cows walking along a passageway were recorded and scored by a trained visual observer. A 3D biomechanical analysis program (Vicon Motus 10.0; CONTEMPLAS GmbH, Kempton, Germany) created a motion template (Fig. 2) for each leg joint angle and each cow using the acquired video. Automatic tracking of the reflective markers in the X, Y and Z planes, as well as the rotational matrix R, was then carried out. This process was repeated three times across a span of 14 weeks. (Fig. 3)
-<p float="left">
-  <img src="./images/R-H.png"  width="100"/>
-  <img src="./images/X-FF.png"  width="100"/>
-</p>
+
+
 
 
 ### Data Exploration and Clustering
+The data was first cleaned by removing outliers. 
 
+<p float="left">
+  <img src="./images/R-H.png"  width="45%"/>
+  <img src="./images/X-FF.png"  width="45%"/>
+</p>
+ 
+ Unsupervised learning was then applied  to determine whether there existed characteristics in the data that could be used to create clusters that were independent of the cows' labels. Tests were done with and without cows that we deemed "problematic", to see if these particular cows would create additional bias in the groupings. Two clustering algorithms were explored The K-Means and the hirerachical clustering.
+ The figure below shows an example of dendrograms. 
+
+<p align="center">
+  <img src="./images/S1.png" alt="drawing" width="60%"/>
+</p>
 
 
 ### Data Augmentation
@@ -64,6 +74,10 @@ Additional synthetic data (up to 24 000 samples) was derived from the real cows 
 A simulation of a synthetic cow  is shown in this video:
 <p align="center">
   <img src="./videos/Joly0_Frames_30_to_201.gif" alt="drawing" width="70%"/>
+</p>
+The figure bellow shows the t-SNE visualization of the new created data
+<p align="center">
+  <img src="./images/tsne_report_gene_side2.png" alt="drawing" width="50%"/>
 </p>
 
 ### Binary Classification Non-lame vs Lame cows
@@ -82,53 +96,55 @@ A simulation of a synthetic cow  is shown in this video:
 ### Results 
 Multiple CNN models were built based on the configuration mentioned in the previous section. During training, the models were evaluated following a 5-fold cross-validation framework using a Monte Carlo optimization approach (tab. 1).
 
-<table>
-  <tr>
-    <th>Variation (%)</th>
-    <th>Accuracy (%)</th>
-    <th>Precision (%)</th>
-    <th>Recall (%)</th>
-    <th>F1-score (%)</th>
-  </tr>
-  <tr>
-    <td>1</td>
-    <td>76.84</td>
-    <td>78.60</td>
-    <td>777.60</td>
-    <td>76.40</td>
-  </tr>
-  <tr>
-    <td>2</td>
-    <td>83.80</td>
-    <td>83.80</td>
-    <td>83.60</td>
-    <td>83.20</td>
-  </tr>
-  <tr>
-    <td>5</td>
-    <td>90.76</td>
-    <td>92.20</td>
-    <td>91.40</td>
-    <td>90.60</td>
-    
-  </tr>
-  <tr>
-    <td>10</td>
-    <td>81.54</td>
-    <td>84.60</td>
-    <td>82.40</td>
-    <td>81.40</td>
-  </tr>
-  
-  </tr>
-  <tr>
-    <td>15</td>
-    <td>79.99</td>
-    <td>84.60</td>
-    <td>80.04</td>
-    <td>80.02</td>
-  </tr>
-  
-</table>
+  <table>
+    <tr>
+      <th>Variation (%)</th>
+      <th>Accuracy (%)</th>
+      <th>Precision (%)</th>
+      <th>Recall (%)</th>
+      <th>F1-score (%)</th>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>76.84</td>
+      <td>78.60</td>
+      <td>777.60</td>
+      <td>76.40</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>83.80</td>
+      <td>83.80</td>
+      <td>83.60</td>
+      <td>83.20</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>90.76</td>
+      <td>92.20</td>
+      <td>91.40</td>
+      <td>90.60</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>81.54</td>
+      <td>84.60</td>
+      <td>82.40</td>
+      <td>81.40</td>
+    </tr>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>79.99</td>
+      <td>84.60</td>
+      <td>80.04</td>
+      <td>80.02</td>
+    </tr>
+
+  </table>
+
+<p align="left">
+  <img src="./images/svm_eval.png" alt="drawing" width="50%"/>
+</p>
 
 
